@@ -1,0 +1,34 @@
+---
+- name: build a container 
+  hosts: localhost
+  connections: localhost
+  tasks:
+    - name: stop current runnig container
+      command: docker stop front-container 
+      ignore-errors: yes
+
+    - name: remove stopped container
+      command: docker rm front-container 
+      ignore-errors: yes"
+
+   -  name: remove front image
+      command: docker rmi front-image
+      ignore-errors: yes
+
+   -  name: build docker image using the dockerfile 
+      command: docker build -t front-image . 
+    
+
+   -  name: create front-container
+      command: docker run -d  -p 80:80  --name front-container  front-image
+    
+
+   -  name: push front-image 
+      command: tag front-image elfatihyz/dalli 
+    
+
+
+    - name: push elfatihyz/dalli
+      command: docker push elfatihyz/dalli
+      
+
