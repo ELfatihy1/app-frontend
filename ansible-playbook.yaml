@@ -21,7 +21,7 @@
       command: docker run -d -p 80:80 --name front-container front-image
 
     - name: Log in to Docker Hub
-      commande: docker login -u "elfatihyz" -p "zahira2000"
+      command: docker login -u "elfatihyz" -p "zahira2000"
        
     - name: push front-image 
       command: docker tag front-image elfatihyz/dalli 
