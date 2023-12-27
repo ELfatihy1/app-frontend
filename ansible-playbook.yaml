@@ -1,7 +1,6 @@
 ---
 - name: build a container 
   hosts: localhost
-  connections: localhost
   tasks:
     - name: stop current running container
       command: docker stop front-container 
